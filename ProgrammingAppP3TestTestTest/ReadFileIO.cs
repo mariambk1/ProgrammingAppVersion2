@@ -50,7 +50,7 @@ namespace ProgrammingApp
                     continue;
                 }
 
-                if (line.StartsWith("repeat", StringComparison.OrdinalIgnoreCase))
+                if (line.StartsWith("repeat", StringComparison.OrdinalIgnoreCase))  // using stringcomparison https://www.c-sharpcorner.com/blogs/compare-strings-using-stringcomparisonordinalignorecase1
                 {
                     string[] parts = line.Split(' ');
                     if (parts.Length >= 2 && int.TryParse(parts[1], out int repeatCount))
@@ -69,7 +69,7 @@ namespace ProgrammingApp
                     }
                     lineIndex++;
                 }
-                else if (line.StartsWith("turn", StringComparison.OrdinalIgnoreCase))
+                else if (line.StartsWith("turn", StringComparison.OrdinalIgnoreCase))  
                 {
                     string[] parts = line.Split(' ');
                     if (parts.Length >= 2 && (parts[1].Equals("Left", StringComparison.OrdinalIgnoreCase) ||
@@ -89,6 +89,7 @@ namespace ProgrammingApp
                     lineIndex++;
                 }
             }
+
 
             return commands;
         }
