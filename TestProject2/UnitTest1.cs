@@ -1,6 +1,10 @@
+
+//run the tests in the terminal by typing 'dotnet test' 
+
 using ProgrammingApp;
 using Xunit; 
 namespace TestProject2
+ 
 {
     public class CommandTests
     {

@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProgrammingAppP3TestTestTest\ProgrammingAppVersion2.csproj" />
+    <ProjectReference Include="..\ProgrammingAppVersion2\ProgrammingAppVersion2.csproj" />
   </ItemGroup>
 
 </Project>
