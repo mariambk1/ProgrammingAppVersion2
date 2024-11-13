@@ -9,7 +9,7 @@ namespace ProgrammingApp
 
     public class CommandsProgram
     {
-        private string Name { get; set; }
+        public string Name { get; set; }
         public List<Command> CommandList { get; private set; }
         private ProgramRepository Repository { get; set; }
 

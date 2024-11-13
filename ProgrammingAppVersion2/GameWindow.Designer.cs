@@ -8,6 +8,8 @@ namespace ProgrammingApp
     {
         private System.ComponentModel.IContainer components = null;
 
+        private System.Windows.Forms.PictureBox gridPictureBox;
+
         private System.Windows.Forms.ComboBox comboBoxOptions;
         private System.Windows.Forms.ComboBox comboBoxSecondaryOptions;
         private System.Windows.Forms.ComboBox comboBoxLevelOptions;
@@ -50,6 +52,12 @@ namespace ProgrammingApp
             this.metricsButton = new System.Windows.Forms.Button();
 
             this.SuspendLayout();
+
+            // PictureBox for Grid, Grid label nog weghalen
+            this.gridPictureBox = new System.Windows.Forms.PictureBox();
+            this.gridPictureBox.Location = new System.Drawing.Point(600, 100);
+            this.gridPictureBox.Size = new System.Drawing.Size(450, 450); // Adjust size as needed
+            this.gridPictureBox.BorderStyle = BorderStyle.FixedSingle;
 
             // instructionsLabel
             this.instructionsLabel.AutoSize = true;
@@ -116,6 +124,7 @@ namespace ProgrammingApp
             this.metricsButton.Click += new System.EventHandler(this.CalculateMetrics);
 
             // adding everything 
+            this.Controls.Add(this.gridPictureBox);
             this.Controls.Add(this.instructionsLabel);
             this.Controls.Add(this.comboBoxOptions);
             this.Controls.Add(this.comboBoxSecondaryOptions);

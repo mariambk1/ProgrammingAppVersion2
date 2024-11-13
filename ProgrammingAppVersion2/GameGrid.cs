@@ -8,12 +8,19 @@ namespace ProgrammingApp
         public const int Rows = 10;
         public const int Columns = 10;
         private Cell[,] cells;
-        private int cellSize = 45; 
+        private int cellSize = 45;
 
-        public GameGrid()
+        private Bitmap startImage;
+        private int startImageRow = 0;
+        private int startImageCol = 0;
+        private Person person;
+
+        public GameGrid(Person person)
         {
             cells = new Cell[Rows, Columns];
             InitializeGrid();
+
+            this.person = person;
         }
 
         private void InitializeGrid()
@@ -27,14 +34,21 @@ namespace ProgrammingApp
             }
         }
 
-        public Cell GetCell(int row, int col)
+        public Bitmap GetStartImage()
         {
-            return cells[row, col];
+            return startImage;
         }
 
-        public void SetCellState(int row, int col, bool isOccupied)
+        public int StartImageRow
         {
-            cells[row, col].IsOccupied = isOccupied;
+            get => startImageRow;
+            set => startImageRow = value;
+        }
+
+        public int StartImageCol
+        {
+            get => startImageCol;
+            set => startImageCol = value;
         }
 
         public void Draw(Graphics g, int startX, int startY)
@@ -43,18 +57,27 @@ namespace ProgrammingApp
             {
                 for (int col = 0; col < Columns; col++)
                 {
-                    Brush brush = cells[row, col].IsOccupied ? Brushes.Red : Brushes.White;
-
+                    Brush brush = Brushes.White;
                     g.FillRectangle(brush, startX + col * cellSize, startY + row * cellSize, cellSize, cellSize);
                     g.DrawRectangle(Pens.Black, startX + col * cellSize, startY + row * cellSize, cellSize, cellSize);
                 }
             }
+
+            Bitmap currentImage = person.GetCharacterImage(); 
+            if (currentImage != null)
+            {
+                int imageX = startX + person.PlaceX * cellSize;
+                int imageY = startY + person.PlaceY * cellSize;
+
+                g.DrawImage(currentImage, imageX, imageY, cellSize, cellSize);
+            }
         }
+
 
         public int CellSize
         {
             get => cellSize;
-            set => cellSize = value; 
+            set => cellSize = value;
         }
     }
 

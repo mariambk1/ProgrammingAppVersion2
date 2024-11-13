@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
 
 namespace ProgrammingApp
 {
@@ -49,7 +47,6 @@ namespace ProgrammingApp
             }
         }
 
-
         public void Move(int steps)
         {
             switch (Direction)
@@ -77,6 +74,7 @@ namespace ProgrammingApp
         {
             return $"{Direction}";
         }
+
         public bool WallAhead()
         {
             return false;
@@ -86,6 +84,30 @@ namespace ProgrammingApp
         {
             return false;
         }
-    }
 
+        public void ResetPosition()
+        {
+            PlaceX = 0;
+            PlaceY = 0;
+            Direction = Direction.East; 
+        }
+
+        public Bitmap GetCharacterImage()
+        {
+            string projectRoot = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+
+            switch (Direction)
+            {
+                case Direction.North:
+                    return new Bitmap(Path.Combine(projectRoot, "characterImages", "CharacterNorth.png"));
+                case Direction.South:
+                    return new Bitmap(Path.Combine(projectRoot, "characterImages", "CharacterSouth.png"));
+                case Direction.West:
+                    return new Bitmap(Path.Combine(projectRoot, "characterImages", "CharacterWest.png"));
+                case Direction.East:
+                default:
+                    return new Bitmap(Path.Combine(projectRoot, "characterImages", "CharacterEast.png"));
+            }
+        }
+    }
 }

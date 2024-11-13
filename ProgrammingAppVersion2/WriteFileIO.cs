@@ -30,8 +30,6 @@ namespace ProgrammingApp
             }
         }
 
-
-
         public void HtmlExport(List<Command> commandList, string title = "Export Program")
         {
             try
